@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "bin": {
-    "gemini": "bin/main.js"
+    "cliv2": "bin/main.js"
   },
   "scripts": {
     "build": "rollup",
@@ -20,12 +20,15 @@
     "url": "https://github.com/JerryCjr/node-library-template/issues"
   },
   "homepage": "https://github.com/JerryCjr/node-library-template#readme",
-  "dependencies": {},
+  "dependencies": {
+    "commander": "^5.1.0",
+    "validate-npm-package-name": "^3.0.0"
+  },
   "devDependencies": {
     "@vue/cli-shared-utils": "^4.4.6",
-    "commander": "^5.1.0",
     "envinfo": "^7.5.1",
-    "leven": "^3.1.0",
+    "fs-extra": "^9.0.1",
+    "inquirer": "^7.3.0",
     "minimist": "^1.2.5",
     "rollup": "^2.18.2"
   },

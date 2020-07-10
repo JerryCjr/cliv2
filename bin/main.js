@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 
+const cliName = "cliv2";
+
 // Check node version before requiring/doing anything else
 // The user may be on a very old node version
 const { chalk, semver } = require("@vue/cli-shared-utils");
 const requiredVersion = require("../package.json").engines.node;
-const leven = require("leven");
 
 function checkNodeVersion(wanted, id) {
   if (!semver.satisfies(process.version, wanted)) {
@@ -23,7 +24,7 @@ function checkNodeVersion(wanted, id) {
   }
 }
 
-checkNodeVersion(requiredVersion, "gemini");
+checkNodeVersion(requiredVersion, cliName);
 
 if (semver.satisfies(process.version, "9.x")) {
   console.log(
@@ -35,18 +36,18 @@ if (semver.satisfies(process.version, "9.x")) {
   );
 }
 
-const { program, command } = require("commander");
+const { program } = require("commander");
 const minimist = require("minimist");
 
 // * show version and main usage
 program
-  .name("gemini")
-  .version(`@babyfs/gemini ${require("../package").version}`) // * version
+  .name(cliName)
+  .version(`${cliName} ${require("../package").version}`) // * version
   .usage("<command> [options]");
 // * main
 program
   .command("create <app-name>")
-  .description("create a new project powered by gemini-cli-service")
+  .description("create a new project")
   .option(
     // * git init
     "-g, --git [message]",
@@ -56,6 +57,11 @@ program
     // * no git
     "-n, --no-git",
     "Skip git initialization"
+  )
+  .option(
+    // * force
+    "-f, --force",
+    "Overwrite target directory if it exists"
   )
   .action((name, cmd) => {
     const options = cleanArgs(cmd);
@@ -72,7 +78,7 @@ program
       options.forceGit = true;
     }
 
-    console.log(options);
+    require("../lib/create")(name, options);
   });
 
 program
@@ -88,7 +94,7 @@ program
           Browsers: ["Chrome", "Edge", "Firefox", "Safari"],
           npmPackages: "/**/{typescript,*vue*,@vue/*/}",
           // ! 目前还未发布 所以全局包会找不到
-          npmGlobalPackages: ["gemini"],
+          npmGlobalPackages: [cliName],
         },
         {
           showNotFound: true,
@@ -99,50 +105,7 @@ program
       .then(console.log);
   });
 
-//output help information for unkown command
-
-// output help information on unknown commands
-program.arguments("<command>").action((cmd) => {
-  program.outputHelp();
-  console.log(`  ` + chalk.red(`Unknown command ${chalk.yellow(cmd)}.`));
-  console.log();
-  suggestCommands(cmd);
-});
-
-// add some useful info on help
-program.on("--help", () => {
-  console.log();
-  console.log(
-    `  Run ${chalk.cyan(
-      `gemini <command> --help`
-    )} for detailed usage of given command.`
-  );
-  console.log();
-});
-
 program.parse(process.argv);
-
-if (!process.argv.slice(2).length) {
-  program.outputHelp();
-}
-
-function suggestCommands(unknownCommand) {
-  const availableCommands = program.commands.map((cmd) => cmd._name);
-
-  let suggestion;
-
-  availableCommands.forEach((cmd) => {
-    const isBestMatch =
-      leven(cmd, unknownCommand) < leven(suggestion || "", unknownCommand);
-    if (leven(cmd, unknownCommand) < 3 && isBestMatch) {
-      suggestion = cmd;
-    }
-  });
-
-  if (suggestion) {
-    console.log(`  ` + chalk.red(`Did you mean ${chalk.yellow(suggestion)}?`));
-  }
-}
 
 function camelize(str) {
   return str.replace(/-(\w)/g, (_, c) => (c ? c.toUpperCase() : ""));
