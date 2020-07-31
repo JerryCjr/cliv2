@@ -44,7 +44,7 @@ program
   .name(cliName)
   .version(`${cliName} ${require("../package").version}`) // * version
   .usage("<command> [options]");
-// * main
+// * create
 program
   .command("create <app-name>")
   .description("create a new project")
@@ -79,6 +79,19 @@ program
     }
 
     require("../lib/create")(name, options);
+  });
+// upgrade
+
+program
+  .command("upgrade")
+  .description("update configuration")
+  .option(
+    // * force
+    "-f, --force",
+    "Overwrite all config"
+  )
+  .action((cmd) => {
+    require("../lib/upgrade")(cleanArgs(cmd));
   });
 
 program
