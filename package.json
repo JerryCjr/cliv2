@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "bin": {
-    "cliv2": "bin/main.js"
+    "cliv2": "bin/index.js"
   },
   "scripts": {
     "build": "rollup",
