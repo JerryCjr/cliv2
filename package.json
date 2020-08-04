@@ -20,24 +20,24 @@
     "url": "https://github.com/JerryCjr/node-library-template/issues"
   },
   "homepage": "https://github.com/JerryCjr/node-library-template#readme",
-  "dependencies": {
-    "commander": "^5.1.0",
-    "validate-npm-package-name": "^3.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@vue/cli-shared-utils": "^4.4.6",
     "async": "^3.2.0",
+    "commander": "^6.0.0",
     "consolidate": "^0.15.1",
     "download-git-repo": "^3.0.2",
     "envinfo": "^7.5.1",
     "fs-extra": "^9.0.1",
     "handlebars": "^4.7.6",
     "inquirer": "^7.3.0",
+    "lodash": "^4.17.19",
     "metalsmith": "^2.3.0",
     "minimist": "^1.2.5",
     "read-metadata": "^1.0.0",
     "rollup": "^2.18.2",
-    "user-home": "^2.0.0"
+    "user-home": "^2.0.0",
+    "validate-npm-package-name": "^3.0.0"
   },
   "engines": {
     "node": ">=8.9"
