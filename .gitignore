@@ -9,3 +9,7 @@ temp
 .version
 .versions
 .changelog
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

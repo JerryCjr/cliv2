@@ -1,0 +1,14 @@
+{
+  // * javascript 格式化
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // * ts 格式化
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // * eslint fix
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
