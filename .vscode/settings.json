@@ -7,6 +7,14 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  // * json 格式化
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // * jsonc 格式化
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   // * eslint fix
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
