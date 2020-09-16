@@ -35,7 +35,6 @@
     "metalsmith": "^2.3.0",
     "minimist": "^1.2.5",
     "read-metadata": "^1.0.0",
-    "rollup": "^2.18.2",
     "user-home": "^2.0.0",
     "validate-npm-package-name": "^3.0.0"
   },
