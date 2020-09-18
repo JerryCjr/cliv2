@@ -1,25 +1,24 @@
 {
-  "name": "node-library-template",
-  "version": "0.0.1-beta.0.1",
+  "name": "cliv2",
+  "version": "0.0.1-beta.0.2",
   "description": "",
   "bin": {
     "cliv2": "bin/index.js"
   },
   "scripts": {
-    "build": "rollup",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JerryCjr/node-library-template.git"
+    "url": "git+https://github.com/JerryCjr/cliv2.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JerryCjr/node-library-template/issues"
+    "url": "https://github.com/JerryCjr/cliv2/issues"
   },
-  "homepage": "https://github.com/JerryCjr/node-library-template#readme",
+  "homepage": "https://github.com/JerryCjr/cliv2#readme",
   "dependencies": {},
   "devDependencies": {
     "@vue/cli-shared-utils": "^4.4.6",
